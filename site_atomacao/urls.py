@@ -17,12 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from dashboard import views
-
+from django.views.generic.base import TemplateView
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
-    path('dashboard/', include('dashboard.urls')),
     path('', views.home, name="home"),
+    path('accounts/', include('allauth.urls')),
+    path('admin/', admin.site.urls),
+    path("accounts/profile/", TemplateView.as_view(template_name="profile.html"), name="profile"),
+    path('dashboard/', include('dashboard.urls')),
+    path("i18n/", include("django.conf.urls.i18n")),
+    
+    
 ]

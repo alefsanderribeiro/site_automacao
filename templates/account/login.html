@@ -1,4 +1,5 @@
 {% extends "account/base_entrance.html" %}
+{% load crispy_forms_tags %}
 {% load i18n %}
 {% load allauth account %}
 {% block head_title %}
@@ -9,6 +10,7 @@
         {% trans "Sign In" %}
     {% endelement %}
     {% if not SOCIALACCOUNT_ONLY %}
+        
         {% setvar link %}
             <a href="{{ signup_url }}">
             {% endsetvar %}
@@ -19,7 +21,9 @@
             {% blocktranslate %}If you have not created an account yet, then please {{ link }}sign up{{ end_link }} first.{% endblocktranslate %}
         {% endelement %}
         {% url 'account_login' as login_url %}
+        
         {% element form form=form method="post" action=login_url tags="entrance,login" %}
+            {% crispy form %}
             {% slot body %}
                 {% csrf_token %}
                 {% element fields form=form unlabeled=True %}

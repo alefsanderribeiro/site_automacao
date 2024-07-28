@@ -7,16 +7,20 @@ from django.http import HttpResponse
 
 def home (request):
 
-    return HttpResponse("Home")
+    return render(request, "home.html")
 
 def dashboard(request):
-    return HttpResponse("Dashboard")
+    return render(request, "dashboard/dashboard.html")
 
-def dashboard_home(request):
-
-    return HttpResponse("DashBoard Home")
-
+def dashboard_hom1(request):
+    return HttpResponse("dashboard_hom1")
 
 def dashboard_hom2(request):
-    nomes = ["Alefe", "Geiss", "Veronica"]
-    return render(request, "dashboard/dashboard.html", {"nomes":nomes})
+    return HttpResponse("dashboard_hom2")
+
+def dashboard_hom3(request):
+    return HttpResponse("dashboard_hom3")
+
+    
+
+
